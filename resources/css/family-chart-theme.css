@@ -1,0 +1,72 @@
+/*
+ * family-chart.js ships as a dark widget by default: every non-card
+ * surface (forms, tooltips, search, the remove-relative modal) shares
+ * one --background-color/--text-color pair. We want a light UI to match
+ * the rest of the app, so this file flips that pair to white/dark
+ * instead of only patching individual inputs.
+ */
+.f3 {
+    --female-color: #f472b6;
+    --male-color: #60a5fa;
+    --genderless-color: #a3a3a3;
+    --background-color: #ffffff;
+    --text-color: #111827;
+    font-family: inherit;
+}
+
+.f3-form-cont {
+    border-left: 1px solid #e5e7eb;
+}
+
+.f3-info-field-value {
+    border-bottom-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Connector lines are drawn with a hardcoded white stroke, made for a
+   dark canvas — repaint them for the light background. */
+.f3 path.link {
+    stroke: #9ca3af;
+}
+
+.f3 path.link.f3-path-to-main {
+    stroke: #4f46e5;
+}
+
+.f3 div.card-inner.f3-path-to-main {
+    outline-color: #4f46e5 !important;
+}
+
+.f3-form button[type='submit'] {
+    background-color: #4f46e5;
+    color: #ffffff;
+}
+
+.f3-form button[type='submit']:hover {
+    background-color: #4338ca;
+}
+
+.f3-cancel-btn {
+    background-color: #e5e7eb;
+    color: #374151;
+}
+
+/* @tailwindcss/forms resets every input/select/textarea's colors —
+   force them back explicitly so this always matches the tree's theme
+   regardless of load order or specificity. */
+.f3-form input[type='text'],
+.f3-form select,
+.f3-form textarea {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    border-color: #d1d5db !important;
+}
+
+.f3-form input[type='text']::placeholder,
+.f3-form textarea::placeholder {
+    color: #9ca3af !important;
+}
+
+.f3-form select option {
+    background-color: #ffffff;
+    color: #111827;
+}

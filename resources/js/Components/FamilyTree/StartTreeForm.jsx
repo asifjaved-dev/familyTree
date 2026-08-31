@@ -1,37 +1,8 @@
-import FamilyTree from '@/Components/FamilyTree';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import PrimaryButton from '@/Components/PrimaryButton';
-import { Head, router, useForm } from '@inertiajs/react';
+import { router, useForm } from '@inertiajs/react';
+import { UsersIcon } from '@heroicons/react/24/outline';
 
-export default function Tree({ tree }) {
-    const hasPeople = tree.length > 0;
-
-    return (
-        <AuthenticatedLayout
-            header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                    Family Tree
-                </h2>
-            }
-        >
-            <Head title="Family Tree" />
-
-            <div className="py-12">
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white p-6 shadow-sm sm:rounded-lg">
-                        {hasPeople ? (
-                            <FamilyTree data={tree} />
-                        ) : (
-                            <StartTreeForm />
-                        )}
-                    </div>
-                </div>
-            </div>
-        </AuthenticatedLayout>
-    );
-}
-
-function StartTreeForm() {
+export default function StartTreeForm() {
     const { data, setData, processing, errors } = useForm({
         first_name: '',
         last_name: '',
@@ -63,8 +34,12 @@ function StartTreeForm() {
     }
 
     return (
-        <div className="mx-auto max-w-md py-12 text-center">
-            <h3 className="text-lg font-medium text-gray-900">
+        <div className="mx-auto max-w-md rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-indigo-50">
+                <UsersIcon className="h-6 w-6 text-indigo-600" />
+            </div>
+
+            <h3 className="mt-4 text-lg font-semibold text-gray-900">
                 Start your family tree
             </h3>
             <p className="mt-1 text-sm text-gray-500">
@@ -80,7 +55,7 @@ function StartTreeForm() {
                     <input
                         type="text"
                         required
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                        className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                         value={data.first_name}
                         onChange={(e) => setData('first_name', e.target.value)}
                     />
@@ -97,7 +72,7 @@ function StartTreeForm() {
                     </label>
                     <input
                         type="text"
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                        className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                         value={data.last_name}
                         onChange={(e) => setData('last_name', e.target.value)}
                     />
@@ -108,7 +83,7 @@ function StartTreeForm() {
                         Gender
                     </label>
                     <select
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                        className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                         value={data.gender}
                         onChange={(e) => setData('gender', e.target.value)}
                     >
@@ -118,7 +93,7 @@ function StartTreeForm() {
                     </select>
                 </div>
 
-                <PrimaryButton disabled={processing}>
+                <PrimaryButton disabled={processing} className="w-full justify-center">
                     Create my tree
                 </PrimaryButton>
             </form>
