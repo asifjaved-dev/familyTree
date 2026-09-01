@@ -133,7 +133,6 @@ The project is being enhanced with additional family-management features.
 * Export family tree
 * JSON export
 * CSV import/export
-* GEDCOM support
 * PDF family tree
 * Family chart image export
 
@@ -186,7 +185,7 @@ Before installing the project, make sure you have:
 * Composer
 * Node.js 20+
 * NPM
-* MySQL / PostgreSQL
+* PostgreSQL
 * Laravel 11+
 
 ## ⚙️ Installation
@@ -240,30 +239,6 @@ Run migrations:
 php artisan migrate
 ```
 
-If the project contains seeders:
-
-```bash
-php artisan db:seed
-```
-
-Start Laravel:
-
-```bash
-php artisan serve
-```
-
-Start Vite:
-
-```bash
-npm run dev
-```
-
-The application will be available at:
-
-```text
-http://127.0.0.1:8000
-```
-
 ## 🗂️ Project Structure
 
 ```text
@@ -309,7 +284,7 @@ The application follows a modern Laravel + Inertia architecture:
 ```text
                     ┌─────────────────────┐
                     │       Browser       │
-                    │      Vue.js UI      │
+                    │      React.js UI    │
                     └──────────┬──────────┘
                                │
                                │ Inertia.js
@@ -328,7 +303,7 @@ The application follows a modern Laravel + Inertia architecture:
                                ▼
                     ┌─────────────────────┐
                     │      Database       │
-                    │   MySQL/PostgreSQL  │
+                    │      PostgreSQL     │
                     └─────────────────────┘
 
                                │
@@ -340,54 +315,6 @@ The application follows a modern Laravel + Inertia architecture:
                     └─────────────────────┘
 ```
 
-## 🧑‍💻 Development
-
-Run the Laravel development server:
-
-```bash
-php artisan serve
-```
-
-Run Vite:
-
-```bash
-npm run dev
-```
-
-For production:
-
-```bash
-npm run build
-```
-
-## 🧪 Testing
-
-Run Laravel tests:
-
-```bash
-php artisan test
-```
-
-Or:
-
-```bash
-./vendor/bin/phpunit
-```
-
-## 🔒 Security
-
-Security improvements planned for the project include:
-
-* Authentication
-* Authorization policies
-* Private family trees
-* Role-based permissions
-* Input validation
-* CSRF protection
-* Rate limiting
-* Secure file uploads
-* Activity logging
-
 If you discover a security vulnerability, please report it privately rather than opening a public issue.
 
 ## 🗺️ Roadmap
@@ -396,6 +323,7 @@ If you discover a security vulnerability, please report it privately rather than
 * [x] Laravel backend
 * [x] Inertia.js integration
 * [x] Family Chart.js integration
+* [x] PDF export
 * [ ] Family member CRUD
 * [ ] Relationship management
 * [ ] Authentication
@@ -405,8 +333,6 @@ If you discover a security vulnerability, please report it privately rather than
 * [ ] Search and filters
 * [ ] Family statistics
 * [ ] Import / Export
-* [ ] GEDCOM support
-* [ ] PDF export
 * [ ] Family collaboration
 * [ ] Notifications
 * [ ] Mobile optimization
